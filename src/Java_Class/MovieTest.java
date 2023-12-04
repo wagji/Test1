@@ -6,7 +6,9 @@ public class MovieTest {
 public static void main(String[] args) 
  {
 	MovieMenu m = new MovieMenu();
-	m.MovieMenu();
+	m.movieMenu();
+	
+	
 	
 	
  }

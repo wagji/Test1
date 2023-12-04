@@ -3,59 +3,115 @@ package Java_Class;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieMgr {
-    
-private List<Movie> movieList;
-
-public MovieMgr() {
-       this.movieList = new ArrayList<>();
-    }
-
-    // add method
-    public void add(Movie m) {
-        movieList.add(m);
-    }
-
-// search method (prints all movies)
-    
-public void search() {
-for (Movie movie : movieList) {
-            System.out.println(movie);
-        }
-    }
-
-public void search( String title ) {
-	for (Movie movie : movieList) {
-		if (movie.getTitle().equals(title) || movie.getTitle().contains(title)) {
-			System.out.println(movie);
-			return ;
-		}
-	}
-	System.out.println( "해당 제목의 영화를 찾을수 없습니다 ");
-}
-public void search01rector(String name) {
-	for(Movie movie : movieList ) {
-		if (movie.getDirector().equals(name)) {
-			System.out.println(movie);
-		}
-	}
-}
-public List<Movie> searchgenre(String genre) {
- List <Movie> foundMovies = new ArrayList <> () ;
- for( Movie movie : movieList)
-
-	if(movie.getGenre().equals(genre)) {
-		foundMovies.add(movie) ;
-	}
-return foundMovies;
-
+public class MovieMgr 
+{
+	int index = 0;
+	List<Movie> movies = new ArrayList<>();
 	
-}
+	MovieMgr(){}
+	
+	void add(Movie m) //영화정보 추가
+	{
+		movies.add(m);
+		System.out.println(movies.size());
+		System.out.println("영화 제목 : "+m.getTitle()+", 영화 감독 : "+m.getDirector()+", 영화 시청 연령 등급 : "+m.getGrade()+", 영화 장르 : "+m.getGenre());
+	}
+	
+	void search() // 영화 정보 전체 출력
+	{
+		for(int i = 0; i<movies.size();i++)
+		{
+			System.out.println(movies.get(i));
+		}
+	}
+	
+	void search(String title) //영화 제목별 출력
+	{
+		
+		for(int i = 0; i<movies.size();i++)
+		{
+			//System.out.println(movies.get(i).getTitle());
+			/*
+			if(movies.get(i).getTitle()==title)
+			{
+				System.out.println("영화 제목 : "+movies.get(i).getTitle());
+			}
+			*/
+			if(movies.get(i).getTitle().equals(title)==true)
+			{
+				System.out.println(movies.get(i));
+			}
+			
+		}
+		
+	}
+	
+	void searchDirector(String name) //영화 감독별 출력
+	{
+		for(int i = 0; i<movies.size();i++)
+		{
+			//System.out.println(movies.get(i).getDirector());
+			
+			/*
+			if(movies.get(i).getDirector() == name)
+			{
+				System.out.println("영화 감독 : "+movies.get(i).getDirector());
+			}
+			*/
+			
+			if(movies.get(i).getDirector().equals(name)==true)
+			{
+				System.out.println(movies.get(i));
+			}
 
+		}
+		
+	}
+	
+	List<Movie> searchGenre(String genre) //영화 장르별 출력
+	{
+		
+		List<Movie> a = new ArrayList<>(); 
+		
+		for(int i = 0; i<movies.size();i++)
+		{
+			//System.out.println(movies.get(i).getGenre());
+			
+			/*
+			if(movies.get(i).getTitle() == genre)
+			{
+				System.out.println("영화 장르 : "+movies.get(i).getGenre());
+			}
+			*/
+			
+			if(movies.get(i).getGenre().equals(genre))
+			{
+				a.add(movies.get(i));
+				//System.out.println("메소드 블락" + i);
+			}
 
-
-
-
-
+		}
+		
+		return a;
+	}
+	
+	void delete(String title)
+	{
+		for(int i = 0; i<movies.size(); i++)
+		{
+			/*
+			if(movies.get(i).getTitle() == title)
+			{
+				movies.remove(i);
+			}
+			*/
+			
+			if(movies.get(i).getTitle().equals(title)==true)
+			{
+				movies.remove(i);
+			}
+		}
+	}
+	
 
 }
